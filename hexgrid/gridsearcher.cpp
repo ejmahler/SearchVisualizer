@@ -5,7 +5,7 @@
 
 #include "hexgrid/hexgrid.h"
 #include "utils/channel.h"
-#include "searchalgorithms.h"
+#include "algorithms/searchalgorithms.h"
 
 //define a hash function for QPoint
 namespace std {

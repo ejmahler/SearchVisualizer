@@ -18,7 +18,7 @@ void GridPainter::start(const QPoint &cursorPos)
 		if (pressedKeys.contains(Qt::Key_S) && type != GridEntry::Start)
 			paintMode = GridEntry::Start;
 
-		else if (pressedKeys.contains(Qt::Key_E) && type != GridEntry::End)
+        else if (pressedKeys.contains(Qt::Key_G) && type != GridEntry::End)
 			paintMode = GridEntry::End;
 
 		else if (pressedKeys.contains(Qt::Key_W) && type != GridEntry::Wall)

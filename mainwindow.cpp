@@ -114,7 +114,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 	{
 	case Qt::Key_W:
 	case Qt::Key_S:
-	case Qt::Key_E:
+    case Qt::Key_G:
+    case Qt::Key_O:
 		painter->keyPressed((Qt::Key)event->key());
 		break;
 
