@@ -145,9 +145,10 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event)
 {
 	switch (event->key())
 	{
-	case Qt::Key_W:
-	case Qt::Key_S:
-	case Qt::Key_E:
+    case Qt::Key_W:
+    case Qt::Key_S:
+    case Qt::Key_G:
+    case Qt::Key_O:
 		painter->keyReleased((Qt::Key)event->key());
 		break;
 	}
