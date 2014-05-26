@@ -1,7 +1,7 @@
 SearchVisualizer
 ================
 
-A C++ program that visualizes th A* search algorithm, using a hexagonal grid. Users can draw starting nodes, goal nodes, and wall nodes by clicking and dragging their mouse, and watch the search as it progresses.
+A C++ program that visualizes the A* search algorithm, using a hexagonal grid. Users can draw starting nodes, goal nodes, and wall nodes by clicking and dragging their mouse, and watch the search as it progresses.
 
 [Click here for a video demonstration](https://www.youtube.com/watch?v=qiZVRTDb_Ns)
 
