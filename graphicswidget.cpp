@@ -12,29 +12,20 @@
 #define GL_MULTISAMPLE  0x809D
 #endif
 
-/*const QVector<QPointF> GraphicsWidget::DISPLAY_HEXAGON_LIST = {
-	QPointF( 0.333,      0.666),//top
+const QPolygonF GraphicsWidget::DISPLAY_HEXAGON = QPolygonF({
+    QPointF( 0.333,    0.666),//top
 	QPointF(-0.333,    0.333), //top right
 	QPointF(-0.666,   -0.333), //bottom right
-	QPointF(-0.333,     -0.666),//bottom
+    QPointF(-0.333,   -0.666),//bottom
 	QPointF( 0.333,   -0.333), //bottom left
 	QPointF( 0.666,    0.333), //top left
-	};*/
+    });
 
 
 
 GraphicsWidget::GraphicsWidget(QWidget *parent) :
-QGLWidget(parent), elements(size(), QImage::Format_ARGB32_Premultiplied), grid(nullptr), displayHexagon()
+QGLWidget(parent), elements(size(), QImage::Format_ARGB32_Premultiplied), grid(nullptr)
 {
-	elements.fill(Qt::transparent);
-
-	displayHexagon.reserve(6);
-	displayHexagon.append(QPointF(0.333, 0.666));
-	displayHexagon.append(QPointF(-0.333, 0.333));
-	displayHexagon.append(QPointF(-0.666, -0.333));
-	displayHexagon.append(QPointF(-0.333, -0.666));
-	displayHexagon.append(QPointF(0.333, -0.333));
-	displayHexagon.append(QPointF(0.666, 0.333));
 }
 
 void GraphicsWidget::draw(HexGrid *g)
@@ -96,7 +87,7 @@ void GraphicsWidget::paintEvent(QPaintEvent *event)
 				else
 					painter.setBrush(Qt::darkGreen);
 
-				painter.drawConvexPolygon(displayHexagon);
+                painter.drawConvexPolygon(DISPLAY_HEXAGON);
 
 				painter.restore();
 			}
@@ -127,16 +118,18 @@ void GraphicsWidget::resizeEvent(QResizeEvent *event) {
 
 QPoint GraphicsWidget::pickCell(const QPointF &pos) const
 {
+    //transform the weird skewed coordinates back to
 	QPointF localPos = getCurrentTransform().inverted().map(pos);
 
 	int roundedX = qRound(localPos.x());
 	int roundedY = qRound(localPos.y());
 
-	//compute how far the actial value differs from the rounded value
+    //subtract the square grid cell we're on from the floating point location
 	float compX = localPos.x() - roundedX;
 	float compY = localPos.y() - roundedY;
 
-	if (sign(compX) == sign(compY) || displayHexagon.containsPoint(QPointF(compX, compY), Qt::OddEvenFill))
+    //if the point is inside the hexagon then we know it would have been inside the hexagon when it was unskewed
+    if (sign(compX) == sign(compY) || DISPLAY_HEXAGON.containsPoint(QPointF(compX, compY), Qt::OddEvenFill))
 	{
 		return QPoint(roundedX, roundedY);
 	}

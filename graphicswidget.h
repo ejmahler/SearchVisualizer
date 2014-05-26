@@ -39,7 +39,7 @@ private:
 
 	bool displayControls;
 
-	QPolygonF displayHexagon;
+    const static QPolygonF DISPLAY_HEXAGON;
 
 };
 
