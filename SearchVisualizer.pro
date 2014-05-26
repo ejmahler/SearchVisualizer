@@ -24,12 +24,12 @@ SOURCES += \
 HEADERS  += \
     graphicswidget.h \
     mainwindow.h \
-    searchalgorithms.h \
     hexgrid/gridsearchevent.h \
     hexgrid/hexgrid.h \
     hexgrid/gridpainter.h \
     hexgrid/gridsearcher.h \
-    utils/channel.h
+    utils/channel.h \
+    algorithms/searchalgorithms.h
 
 FORMS    += \
     mainwindow.ui
