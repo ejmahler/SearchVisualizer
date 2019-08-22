@@ -24,7 +24,7 @@ To erase anything, hold the O key, click a cell, then drag with your mouse.
 To start the search, press enter or return.
 To pause/unpuase the search press space.
 To cancel the search, press backspace or delete.
-To erase all the cells and revert to the intial state, press the escape key.
+To erase all the cells and revert to the initial state, press the escape key.
 
 License
 ----------
